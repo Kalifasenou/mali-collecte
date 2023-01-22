@@ -1,0 +1,33 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div></div>
+  <div class="titre">
+    Avec Mali Collecte, toute personne compte dans les prises de décisions du pays
+  </div>
+
+  <form>
+    <ion-item id="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <ion-item id="full">
+      <ion-label position="floating">Mot de passe </ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+    <div class="small-text"><a [routerLink]="['/mdpoublier']" >Mot de passe oublié ?</a></div>
+    <ion-row >
+      <ion-col >
+        <ion-button class="submit" style="background-color: #5AAE3E;" expand="block" >Se connecter</ion-button>
+        <div class="small-text">Vous n'avez de compte ?<a [routerLink]="['/inscription']" > Cliquez ici !</a></div>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

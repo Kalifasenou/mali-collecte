@@ -1,0 +1,7 @@
+{
+  "name": "mali-collecte",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,45 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align:center;">Inscription</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-title style="text-align:center; margin-bottom: 15px; margin-top: 95px;">Inscription</ion-title>
+  <form class="inscription" style="margin: 10px;">
+    <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input maxlength="15" type="text"></ion-input>
+    </ion-item>
+    <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
+      <ion-label position="floating">Prenom</ion-label>
+      <ion-input maxlength="25" type="text"></ion-input>
+    </ion-item>
+    <ion-item id="full">
+      <ion-label position="floating">Ville, Region</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
+      <ion-label position="floating" >Telephone</ion-label>
+      <ion-input type="number" maxlength="8" required></ion-input>
+    </ion-item>
+    <ion-item id="full">
+      <ion-label position="floating">Mot de passe</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+    <ion-item id="full">
+      <ion-label position="floating">Confirmer mot de passe</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col >
+        <ion-button type="submit"  expand="block" >Valider</ion-button>
+      </ion-col>
+    </ion-row>
+    <div></div>
+    <div style="align-items: center; text-align: center; margin-top: 15px;">As-tu deja un compte ? <a [routerLink]="['/connexion']">Connectez-vous ici !</a></div>
+  </form>
+</ion-content>
