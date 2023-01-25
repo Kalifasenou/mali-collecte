@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'connexion',
     pathMatch: 'full'
   },
   {
@@ -43,7 +43,27 @@ const routes: Routes = [
     path: 'splash-screen',
     loadChildren: () => import('./splash-screen/splash-screen.module').then( m => m.SplashScreenPageModule)
   },
-  
+  {
+    path: 'recuperemdp',
+    loadChildren: () => import('./pages/connexion/recuperemdp/recuperemdp.module').then( m => m.RecuperemdpPageModule)
+  },
+  {
+    path: 'admin-accueil',
+    loadChildren: () => import('./adminpage/accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
+  {
+    path: 'profils',
+    loadChildren: () => import('./adminpage/profils/profils.module').then( m => m.ProfilsPageModule)
+  },
+  {
+    path: 'questionnaire',
+    loadChildren: () => import('./adminpage/questionnaire/questionnaire.module').then( m => m.QuestionnairePageModule)
+  },
+  {
+    path: 'popup',
+    loadChildren: () => import('./autrepage/popup/popup.module').then( m => m.PopupPageModule)
+  },
+
 ];
 
 @NgModule({

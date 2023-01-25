@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Sondage</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  <div style="margin-top: 50px; text-align: center;"><p>Les Sondages public ou ceux au quelles vous avez été assignées </p></div>
+  <ion-card>
+    <img src="/mali-collecte/src/assets/IMG_2213.JPG" alt="Image de l'activité">
+    <ion-card-header>
+      <ion-card-subtitle><b>{{activityName}}</b></ion-card-subtitle>
+      <!-- <ion-card-title>{{organization}}</ion-card-title> -->
+    </ion-card-header>
 
+    <ion-card-content >
+      <p>Date de debut: <b>{{begunDate}}</b></p>
+      <p>Date de fin: <b>{{endDate}}</b></p>
+    </ion-card-content>
+
+
+    <p> Nom de l'organisateur <b>{{organization}}</b> </p>
+
+    <ion-button color="danger" >Refuser</ion-button>
+    <ion-button>Voir+</ion-button>
+    <ion-button color="success">Accepter</ion-button>
+    <!-- <ion-button color="danger" (click)="openPopup('reject')">Reject</ion-button>
+    <ion-button (click)="openPopup('view')">View More</ion-button>
+    <ion-button color="success" (click)="openPopup('accept')">Accept</ion-button> -->
+  </ion-card>
 </ion-content>

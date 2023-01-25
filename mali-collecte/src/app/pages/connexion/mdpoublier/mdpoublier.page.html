@@ -1,23 +1,15 @@
-<!-- <ion-header>
-  <ion-toolbar>
-     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>mdpoublier</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
 
 <ion-content class="content">
-  <ion-title style="margin-top: 90px; margin-bottom: 45px;text-align: center;"> Reinitialiser votre mot de passe </ion-title>
-  <form>
-    <ion-item id="full">
+  <ion-title class="titre"> Reinitialiser votre mot de passe </ion-title>
+  <form class="formulaire">
+    <ion-item class="full">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" placeholder="veuillez saisir votre adresse mail" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button class="submit" expand="block">Reinitialiser</ion-button>
+        <ion-button class="submit" expand="block" routerLink="/recuperemdp">Reinitialiser</ion-button>
       </ion-col>
     </ion-row>
   </form>

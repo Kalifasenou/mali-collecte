@@ -1,0 +1,35 @@
+.donnesfaits{
+  width: 85px;
+  margin-bottom: -25px !important;
+  height: 65px;
+  color: black;
+
+
+}
+
+.donnesfaitsparticiper{
+  align-items: center;
+  height: 60px;
+  width: 215px;
+  text-align: center;
+}
+
+.images{
+  display: flex;
+    align-items: center;
+    height: 150px;
+    margin-top: -120px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.monrow{
+  display: flex;
+  text-align: center;
+}
+
+ion-button
+{
+  margin-top: -30px;
+    --background: #5AAE3E;
+  }
