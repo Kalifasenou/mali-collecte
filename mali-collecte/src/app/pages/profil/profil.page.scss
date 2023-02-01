@@ -1,18 +1,19 @@
-.donnesfaits{
-  width: 85px;
-  margin-bottom: -25px !important;
-  height: 65px;
-  color: black;
+// .donnesfaits{
+//   width: 130px;
+//   margin-bottom: -25px !important;
+//   height: 65px;
+//   color: black;
+//   align-self: center; align-content: center;
 
 
-}
+// }
 
-.donnesfaitsparticiper{
-  align-items: center;
-  height: 60px;
-  width: 215px;
-  text-align: center;
-}
+// .donnesfaitsparticiper{
+//   align-items: center;
+//   height: 60px;
+//   width: 215px;
+//   text-align: center; align-self: center; align-content: center;
+// }
 
 .images{
   display: flex;
@@ -21,15 +22,15 @@
     margin-top: -120px;
     justify-content: center;
     align-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; align-self: center; align-content: center;
 }
 .monrow{
   display: flex;
-  text-align: center;
+  text-align: center;align-self: center; align-content: center;
 }
 
 ion-button
 {
   margin-top: -30px;
-    --background: #5AAE3E;
+    --background: #5AAE3E; align-self: center; align-content: center;
   }

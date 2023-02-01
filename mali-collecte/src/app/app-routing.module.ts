@@ -6,11 +6,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-  {
-    path: '',
-    redirectTo: 'connexion',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'splash-screen',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'accueil',
     loadChildren: () => import('./pages/accueil/accueil.module').then( m => m.AccueilPageModule)
@@ -58,10 +58,6 @@ const routes: Routes = [
   {
     path: 'questionnaire',
     loadChildren: () => import('./adminpage/questionnaire/questionnaire.module').then( m => m.QuestionnairePageModule)
-  },
-  {
-    path: 'popup',
-    loadChildren: () => import('./autrepage/popup/popup.module').then( m => m.PopupPageModule)
   },
 
 ];

@@ -5,7 +5,8 @@ ion-card {
 }
 
 ion-card img {
-  width: 100%;
+  width: 200px;
+  height: 200px;
 }
 
 ion-card ion-card-header {
@@ -30,8 +31,8 @@ ion-card ion-card-content {
 ion-card ion-button {
   font-size: 10px;
   margin-top: 20px;
-  width: 60px;
-  height: 28px;
+  width: 100%;
+  height: 45px;
 }
 
 ion-card ion-button[color="danger"] {
@@ -43,6 +44,7 @@ ion-card ion-button[color="success"] {
   --background: #4caf50;
   --color: #fff;
 }
+
 
 ion-button {
   --background: #5AAE3E;

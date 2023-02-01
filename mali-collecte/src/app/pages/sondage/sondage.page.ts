@@ -9,10 +9,28 @@ import { PopoverController } from '@ionic/angular';
 })
 export class SondagePage implements OnInit {
 
-  activityName: string = "Activity 1";
-  organization: string = "Organization A";
-  begunDate: string = "01/01/2022";
-  endDate: string = "01/31/2022";
+  title = 'Les Sondages public ou ceux auxquelles vous avez été assignées';
+  activityImage = '../../../assets/Logo-.png';
+  activityName = '';
+  begunDate = '';
+  // endDate = '';
+  organization = '';
+
+  showRejectButton = true;
+  showViewMoreButton = true;
+  showAcceptButton = true;
+
+  reject() {
+    console.log('Refuser button clicked');
+  }
+
+  // viewMore() {
+  //   console.log('Voir+ button clicked');
+  // }
+
+  accept() {
+    console.log('Accepter button clicked');
+  }
 
   constructor(public popoverController: PopoverController) { }
 

@@ -1,26 +1,40 @@
+<ion-content style="text-align: center; align-items: center;">
+  <ion-row style="text-align: center; align-content: center; align-self: center;">
+    <div style="margin-top: 50px; text-align: center; align-items: center;">
+      <p>{{ title }}</p>
+    </div>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-card>
+        <img [src]="activityImage" alt="Image de l'activité">
+        <ion-card-header>
+          <ion-card-subtitle>{{activityName}}</ion-card-subtitle>
+        </ion-card-header>
 
-<ion-content>
-  <div style="margin-top: 50px; text-align: center;"><p>Les enquêtes public ou ceux au quelles vous avez été assignées </p></div>
-  <ion-card>
-    <img src="/mali-collecte/src/assets/IMG_2213.JPG" alt="Image de l'activité">
-    <ion-card-header>
-      <ion-card-subtitle>{{activityName}}</ion-card-subtitle>
-      <!-- <ion-card-title>{{organization}}</ion-card-title> -->
-    </ion-card-header>
+        <ion-card-content>
+          <p>Date de debut: {{begunDate}}</p>
+          <p>Date de fin: {{endDate}}</p>
+        </ion-card-content>
 
-    <ion-card-content>
-      <p>Date de debut: {{begunDate}}</p>
-      <p>Date de fin: {{endDate}}</p>
-    </ion-card-content>
+        <p>Nom de l'organisateur {{ organization }}</p>
+
+        <ion-row>
+          <ion-col size="4"> <ion-button *ngIf="showRejectButton" color="danger"
+              (click)="reject()">Refuser</ion-button></ion-col>
+          <ion-col size="4"> <ion-button *ngIf="showViewMoreButton"
+              (click)="presentPopover($event)">Voir+</ion-button></ion-col>
+          <ion-popover  #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+            <ng-template>
+              <ion-content class="ion-padding">Description de l'activité</ion-content>
+            </ng-template>
+          </ion-popover>
+          <ion-col size="4"> <ion-button *ngIf="showAcceptButton" color="success"
+              (click)="accept()">Accepter</ion-button></ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
 
-    <p> Nom de l'organisateur {{organization}}</p>
-
-    <ion-button color="danger" >Refuser</ion-button>
-    <ion-button>Voir+</ion-button>
-    <ion-button color="success">Accepter</ion-button>
-    <!-- <ion-button color="danger" (click)="openPopup('reject')">Reject</ion-button>
-    <ion-button (click)="openPopup('view')">View More</ion-button>
-    <ion-button color="success" (click)="openPopup('accept')">Accept</ion-button> -->
-  </ion-card>
 </ion-content>

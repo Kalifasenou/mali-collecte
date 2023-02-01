@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 
 @Component({
@@ -8,14 +8,46 @@ import { PopoverController } from '@ionic/angular';
 })
 export class EnquetePage implements OnInit {
 
-  activityName: string = "Activity 1";
-  organization: string = "Organization A";
-  begunDate: string = "01/01/2022";
-  endDate: string = "01/31/2022";
+  @ViewChild('popover') popover: { event: Event; };
+
+  isOpen = false;
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
+  }
+
+  // activityName: string = "Activity 1";
+  // organization: string = "Organization A";
+  // begunDate: string = "01/01/2022";
+  // endDate: string = "01/31/2022";
 
   constructor(public popoverController: PopoverController) { }
 
   ngOnInit() {
+  }
+
+  title = 'Les enquêtes public ou ceux auxquelles vous avez été assignées';
+  activityImage = '../../../assets/Logo-.png';
+  activityName = '';
+  begunDate = '';
+  endDate = '';
+  organization = '';
+
+  showRejectButton = true;
+  showViewMoreButton = true;
+  showAcceptButton = true;
+
+  reject() {
+    console.log('Refuser button clicked');
+  }
+
+  viewMore() {
+    console.log('Voir+ button clicked');
+  }
+
+  accept() {
+    console.log('Accepter button clicked');
   }
 
 //   async openPopup(type: string) {

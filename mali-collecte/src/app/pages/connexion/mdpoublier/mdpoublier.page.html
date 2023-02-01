@@ -2,14 +2,15 @@
 
 <ion-content class="content">
   <ion-title class="titre"> Reinitialiser votre mot de passe </ion-title>
-  <form class="formulaire">
+  <form  (ngSubmit)="onSubmit()" class="formulaire">
+    <!-- <form [formGroup]="resetForm" (ngSubmit)="onSubmit()" class="formulaire"> -->
     <ion-item class="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" placeholder="veuillez saisir votre adresse mail" required></ion-input>
+      <ion-input type="email" formControlName="email" placeholder="veuillez saisir votre adresse mail" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button class="submit" expand="block" routerLink="/recuperemdp">Reinitialiser</ion-button>
+        <ion-button class="submit" expand="block" [disabled]="!resetForm.valid" routerLink="/recuperemdp">Reinitialiser</ion-button>
       </ion-col>
     </ion-row>
   </form>
