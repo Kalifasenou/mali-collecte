@@ -22,6 +22,5 @@ public class Question {
     private String type;
     @JoinColumn(name = "questionnaire_id")
     @ManyToOne
-    @JsonIgnore
     private Questionnaire questionnaire;
 }

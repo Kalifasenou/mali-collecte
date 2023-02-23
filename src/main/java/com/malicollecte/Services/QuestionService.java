@@ -3,6 +3,8 @@ package com.malicollecte.Services;
 import com.malicollecte.models.Question;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 public interface QuestionService {
 
@@ -13,5 +15,5 @@ public interface QuestionService {
     void SupprimerQuestion(Long id );
 
 
-
+    List<Question> getQuestionsByQuestionnaireId(Long questionnaireId);
 }
