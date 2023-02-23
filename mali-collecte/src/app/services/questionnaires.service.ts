@@ -51,12 +51,25 @@ AfficherQuestionnaireparIdEnquete(idEnquete : any) {
 
 
 
-  addQuestionsToQuestionnaire(questions: any[], questionnaireId: any): Observable<any> {
-    const data = {
-      questions: questions
-    };
-    return this.http.put(COLLECAPI + `ajouterquestion/${questionnaireId}`, data);
-  }
+  // addQuestionsToQuestionnaire(questions: any[], questionnaireId: any): Observable<any> {
+  //   const data = {
+  //     questions: questions
+  //   };
+  //   return this.http.post(COLLECAPI + `ajoutquestion/${questionnaireId}`, data);
+  // }
+
+
+  addQuestionsToQuestionnaire(intitule:any,type:any, questionnaireId: any): Observable<any> {
+
+    const data={
+      "intitule":intitule,
+      "type":type
+    }
+
+      return this.http.post(COLLECAPI + `ajoutquestion/${questionnaireId}`, data);
+    }
+
+
 
   getQuestionsByQuestionnaireId(idquestionnaire: any): Observable<any> {
     return this.http.get(COLLECAPI2 + `byquestionnaire/${idquestionnaire}`)

@@ -37,7 +37,7 @@ export class ConnexionPage implements OnInit {
       'username': this.username,
       'password': this.password
     }
-   
+
 
     this.authenticationService.login(login).subscribe({
       next: (loginResponse: ILoginRetrieve) => {
@@ -45,12 +45,12 @@ export class ConnexionPage implements OnInit {
 
         this.roles=loginResponse.roles
         this.roles.forEach((role: string) => {
-          if (role=="ROLE_ADMIN" ||role=="ROLE_MOD") {
+          if (role=="ROLE_ADMIN" ||role=="ROLE_MODERATOR") {
             this.router.navigate(['/admin-accueil']);
           }else if (role=="ROLE_USER") {
             this.router.navigate(['/home/accueil']);
           }
-          
+
         });
         // Lorsque la requête s'est bien passée tu écris ta logique
       },

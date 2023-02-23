@@ -17,21 +17,88 @@
   </ion-card-content>
 
 </ion-card>
-<div >
+<div *ngIf="!questionnaires" >
   <ion-button class="monbouton" [routerLink]="['/creerquestionnaire', id]" > ajouter Questionnaire </ion-button>
 </div>
+<!-- <ion-button (click)="openModal()">Ajouter Question</ion-button> -->
+
+
+  <ion-button (click)="setOpen(true)" style="margin-left: 25px;">Ajouter Question</ion-button>
+  <!-- <ion-button expand="block" >Open</ion-button> -->
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Ajout d'une question</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Intitulé de la question</ion-label>
+            <ion-input [(ngModel)]="NouvelleQuestion.intitule" name="intitule"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Type de question</ion-label>
+            <ion-select [(ngModel)]="NouvelleQuestion.type" name="type">
+              <ion-select-option value="text">Texte</ion-select-option>
+              <ion-select-option value="checkbox">Cases à cocher</ion-select-option>
+              <ion-select-option value="radio">Boutons radio</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" (click)="ajouterQuestions()">Ajouter la question</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+<!-- <ion-modal #addQuestionModal>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Ajouter une question</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">Annuler</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Intitulé de la question</ion-label>
+        <ion-input [(ngModel)]="NouvelleQuestion.intitule" name="intitule"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Type de question</ion-label>
+        <ion-select [(ngModel)]="NouvelleQuestion.type" name="type">
+          <ion-select-option value="text">Texte</ion-select-option>
+          <ion-select-option value="checkbox">Cases à cocher</ion-select-option>
+          <ion-select-option value="radio">Boutons radio</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" (click)="addQuestion()">Ajouter la question</ion-button>
+  </ion-content>
+</ion-modal> -->
+
 <ion-card>
   <ion-card-title >
 Nom questionnaire :{{questionnaires?.libellequestionnaire}}
   </ion-card-title>
-  <ion-button (click)="addQuestions(listequestion)">Ajouter Question</ion-button>
+  <!-- <ion-button (click)="ajouterQuestions(listeQuestions)">Ajouter Question</ion-button> -->
+
   <ion-card-content>
 
       <ion-item *ngFor="let question of listeQuestionnaireQuestions">
-        <ion-row style="display: block;">
+        <!-- <ion-row style="display: block;"> -->
           <ion-col size="8">Question : {{question?.intitule}}</ion-col>
-          <ion-col size="4"> Type : {{question.type}}</ion-col>
-        </ion-row>
+          <ion-col size="4"> Type : {{question?.type}}</ion-col>
+        <!-- </ion-row> -->
       </ion-item>
 
   </ion-card-content>

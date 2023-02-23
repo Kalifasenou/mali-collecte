@@ -12,3 +12,36 @@ img{
     border-radius: 10;
     --background-color: black;
 }
+
+/* Centrer le titre de la page */
+ion-card-header ion-card-title {
+  text-align: center;
+}
+
+/* Ajuster la taille de l'image */
+ion-card-content div img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ajouter de l'espace entre les éléments */
+ion-card-content div p {
+  margin-bottom: 10px;
+}
+
+/* Ajuster la taille du bouton */
+.monbouton {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Ajuster la taille des questions */
+ion-item ion-col {
+  font-size: 14px;
+}
+
+/* Ajuster la marge des éléments de la liste de questions */
+ion-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -12,13 +12,23 @@ export class DetailsEnquetePage implements OnInit {
 
   enquete: any;
   id: any;
-  isFormsCreate= false;
-  isFormsNotCreate= false;
   questionnaires: any;
-  listequestion: any;
+  listeQuestions: any;
   listeQuestionnaireQuestions: any;
-  idquestionnaires: any;
-  idlistequestion: any;
+
+
+
+  NouvelleQuestion:any = {
+    intitule: null,
+    type: null
+  };
+
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   // listeQuestionnaireQuestions: any[] = [];
 
   // enquete: any; // Define enquete property here
@@ -26,46 +36,53 @@ export class DetailsEnquetePage implements OnInit {
   constructor(private route: ActivatedRoute, private enquetesService: EnquetesService, private questionnairesService: QuestionnairesService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    console.log(this.id)
+    const { id } = this.route.snapshot.params;
+    console.log(id);
 
-
-    this.enquetesService.VoirDescriptionEnquete(this.id).subscribe(data => {
+    this.enquetesService.VoirDescriptionEnquete(id).subscribe(data => {
       this.enquete = data;
       console.log(data);
     });
- this.questionnairesService.AfficherQuestionnaireparIdEnquete(this.id).subscribe(data => {
+
+    this.questionnairesService.AfficherQuestionnaireparIdEnquete(id).subscribe(data => {
       this.questionnaires = data;
       console.log(data);
 
-
-      this.questionnairesService.getQuestionsByQuestionnaireId(this.questionnaires.id).subscribe(
-      data => {
-      this.listeQuestionnaireQuestions = data;
-      console.log(data);
+      this.questionnairesService.getQuestionsByQuestionnaireId(this.questionnaires.id).subscribe(data => {
+        this.listeQuestionnaireQuestions = data;
+        console.log(data);
+      });
     });
-
-    });
-
-
   }
 
-  addQuestions(questions: any[]) {
-    const questionnaireId = this.questionnaires.id;
 
-    this.questionnairesService.addQuestionsToQuestionnaire(questions, this.id).subscribe(data => {
-      this.listequestion=data;
+
+
+  @ViewChild('addQuestionModal') addQuestionModal: any;
+
+  // Ouvre le popup modal pour ajouter une question
+  openModal() {
+    this.addQuestionModal.present();
+  }
+
+  // Ferme le popup modal pour ajouter une question
+  closeModal() {
+    this.addQuestionModal.dismiss();
+  }
+
+    // Ajoute une question au questionnaire
+
+  ajouterQuestions() {
+    // const questionnaireId = this.questionnaires.id;
+
+    this.questionnairesService.addQuestionsToQuestionnaire(this.NouvelleQuestion.intitule,this.NouvelleQuestion.type, this.questionnaires.id).subscribe(data => {
+      this.listeQuestions=data;
       console.log('Questions added successfully');
-      // Add any other action that needs to be performed after questions are added
+      
     });
 
 
   }
-
-  displayQuestions() {
-
-  }
-
 
   }
 
