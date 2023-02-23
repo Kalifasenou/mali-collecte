@@ -24,7 +24,18 @@ public class EnqueteServiceImpl implements EnqueteService {
      */
     @Override
     public Enquete Creer(Enquete enquete) {
-        return enqueteRepositorie.save(enquete);
+        Enquete enquete1 = new  Enquete();
+        enquete1.setEtat(enquete.getEtat());
+        enquete1.setType(enquete.getType());
+        enquete1.setImages(enquete.getImages());
+        enquete1.setLibelle(enquete.getLibelle());
+        enquete1.setDescription(enquete.getDescription());
+        enquete1.setDatedebut(enquete.getDatedebut());
+        enquete1.setDatefin(enquete.getDatefin());
+       // enquete1.setQuestionnaire(enquete.getQuestionnaire());
+        enquete1.setUtilisateur(enquete.getUtilisateur());
+        return enqueteRepositorie.save(enquete1);
+
     }
 
     /**

@@ -17,10 +17,11 @@ public class Enquete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String libelle;
     private String description;
-    private LocalDate datedebut;
-    private LocalDate datefin;
+    private String datedebut;
+    private String datefin;
     private String statut;
 
     //private String nomOrganisation;
@@ -28,11 +29,11 @@ public class Enquete {
 
     private String type;
 
-    private File images;
+    private String images;
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User utilisateur;
 
 
@@ -42,5 +43,7 @@ public class Enquete {
             joinColumns = @JoinColumn(name = "enquete_id"),
             inverseJoinColumns = @JoinColumn(name = "resultat_id"))
     private Resultat resultat;
+
+
 
 }
