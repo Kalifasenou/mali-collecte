@@ -55,6 +55,8 @@ public class AuthController {
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    String username = loginRequest.getUsername();
+    String password = loginRequest.getPassword();
 
     Authentication authentication = authenticationManager
         .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -71,12 +73,17 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-        .body(new UserInfoResponse(jwt,
-                                   userDetails.getId(),
-                                   userDetails.getUsername(),
-                                   userDetails.getEmail(),
-                                   roles));
+
+// Rediriger l'utilisateur vers la page "accueil.html" après une connexion réussie
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.SET_COOKIE, jwtCookie.toString());
+    //headers.add(HttpHeaders.LOCATION, "index.html");
+    return ResponseEntity.ok().headers(headers)
+            .body(new UserInfoResponse(jwt,
+                    userDetails.getId(),
+                    userDetails.getUsername(),
+                    userDetails.getEmail(),
+                    roles));
   }
 
   @PostMapping("/signup")
