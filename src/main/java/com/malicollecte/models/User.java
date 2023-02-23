@@ -28,16 +28,16 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotBlank
+ // @NotBlank
   //@Size(max = 20)
   private String username;
 
-  @NotBlank
+ // @NotBlank
   //@Size(max = 50)
 
   private String email;
 
-  @NotBlank
+  //@NotBlank
   @Size(min = 2, max = 120)
   private String password;
 
@@ -53,13 +53,13 @@ public class User {
   //@Size(max = 8)
   private String numero;
 
-  @NotBlank
+  //NotBlank
   //@Size(max = 100)
   private String localite;
 
   private String organisation;
 
-  @NotBlank
+  //NotBlank
   private String genre;
 
 
@@ -129,9 +129,10 @@ public class User {
 
 
   @OneToMany(mappedBy = "utilisateur")
+  @JsonIgnore
   private List<Enquete> enquetes;
 
-  @ManyToMany(mappedBy = "users")
+  @ManyToMany()
   @JsonIgnore
   List<Questionnaire> questionnairess;
 

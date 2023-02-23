@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurServices {
@@ -83,6 +84,17 @@ public class UtilisateurServiceImpl implements UtilisateurServices {
         } else {
             return "Utilisateur introuvable";
         }
+    }
+
+    @Override
+    public String ModifierRole(Long id, Set role) {
+        User role1 = userRepository.findById(id).orElseThrow(null);
+        if (role1 != null) {
+            role1.setRoles(role);
+            userRepository.save(role1);
+            return "Role changé avec succés !";
+        }
+        return "Utilisateur introuvable !";
     }
 
     //Methode de modication d'adresse mail

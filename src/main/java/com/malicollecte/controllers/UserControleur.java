@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/utilisateur")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserControleur {
 
     @Autowired
@@ -43,6 +45,11 @@ public class UserControleur {
     @PutMapping("/modifierEmail/{id}/{email}")
     public String ModifierEmail(@PathVariable("id") Long id, @PathVariable("email") String email) {
         return utilisateurServices.ModifierEmail(id, email);
+    }
+
+    @PostMapping("/modifier/{id}/{role}")
+    public String ModifierRole(@PathVariable("id") Long id, @PathVariable Set<String> role){
+        return utilisateurServices.ModifierRole(id, role);
     }
 
     @PutMapping("/modifierOrganisation/{id}/{organisation}")
