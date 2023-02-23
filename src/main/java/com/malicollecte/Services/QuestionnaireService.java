@@ -12,6 +12,7 @@ public interface QuestionnaireService {
     List<Questionnaire> ToutAfficher();
 
     Questionnaire AfficherUn(Long id);
+    Questionnaire ajouter(Questionnaire questionnaire );
 
     Questionnaire Creer(Long id, Questionnaire questionnaire);
 
@@ -24,4 +25,6 @@ public interface QuestionnaireService {
     List<Question> AfficherTouteQuestion ();
 
     String AjouterRepondant(Long id, List<Long> idUsers);
+
+    void addQuestionsToQuestionnaire(Long questionnaireId, List<Question> questions);
 }

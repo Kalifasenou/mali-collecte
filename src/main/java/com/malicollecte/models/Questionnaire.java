@@ -19,7 +19,6 @@ public class Questionnaire {
 
     private String libellequestionnaire;
 
-    private String questionnairetype;
 
     @OneToOne
     private Enquete enquete;
@@ -29,9 +28,6 @@ public class Questionnaire {
     private List<Question> questions;
 
     private String etatAvancement;
-
-    @ManyToMany()
-    private List<User> users;
 
 
 }

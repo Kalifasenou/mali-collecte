@@ -13,7 +13,9 @@ import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionnaireServiceImpl  implements QuestionnaireService {
@@ -48,6 +50,24 @@ public class QuestionnaireServiceImpl  implements QuestionnaireService {
     public Questionnaire AfficherUn(Long id) {
         return questionnaireRepositorie.findById(id).orElseThrow(() -> new RuntimeException("Questionnaire not found with id " + id));
     }
+
+    /**
+     * @param questionnaire
+     * @return
+     */
+    @Override
+    public Questionnaire ajouter(Questionnaire questionnaire) {
+        if(questionnaireRepositorie.findByLibellequestionnaire(questionnaire.getLibellequestionnaire())==null) {
+           // questionnaire.setEnquete(questionnaire.getEnquete());
+            questionnaire.setLibellequestionnaire(questionnaire.getLibellequestionnaire());
+           return questionnaireRepositorie.save(questionnaire);
+        }else{
+            return null;
+
+        }
+    }
+
+
 
     /**
      * @param questionnaire
@@ -127,9 +147,24 @@ return "Question supprimé";
         if(users.size() != idUsers.size()) {
             throw new IllegalArgumentException("Aucun utilisateur trouvé");
         }
-        questionnaire.setUsers(users);
+       // questionnaire.setUsers(users);
         questionnaireRepositorie.save(questionnaire);
 
         return "Repondant ajouté avec succés !";
+    }
+
+
+
+    public void addQuestionsToQuestionnaire(Long questionnaireId, List<Question> questions) {
+        Optional<Questionnaire> optionalQuestionnaire = questionnaireRepositorie.findById(questionnaireId);
+        if (optionalQuestionnaire.isPresent()) {
+            Questionnaire questionnaire = optionalQuestionnaire.get();
+            List<Question> questionList = questionnaire.getQuestions();
+            questionList.addAll(questions);
+            questionnaire.setQuestions(questionList);
+            questionnaireRepositorie.save(questionnaire);
+        } else {
+            throw new EntityNotFoundException("Questionnaire not found with ID: " + questionnaireId);
+        }
     }
 }
