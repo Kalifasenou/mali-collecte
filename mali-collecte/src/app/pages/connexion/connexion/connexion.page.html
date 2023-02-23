@@ -10,30 +10,29 @@
 <ion-content>
   <div></div>
   <div class="titre">
-    Avec Mali Collecte, toute personne compte dans les prises de décisions du
-    pays
+    Avec Mali Collecte, toute personne compte dans les prises de décisions du pays
   </div>
 
   <form>
     <ion-item id="full">
       <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" [(ngModel)]="username" required pattern="[a-zA-Z0-9]+"></ion-input>
+      <ion-input type="text" [(ngModel)]="username" name="username" required pattern="[a-zA-Z0-9]+"></ion-input>
     </ion-item>
 
     <!-- verification de l'username  -->
-    <ion-item id="full" *ngIf="connexionForm.get('username')!.invalid && (connexionForm.get('username')!.dirty || connexionForm.get('username')!.touched)">
-      <ion-label class="error" position="floating">Invalid username. Only alphanumeric characters allowed.</ion-label>
-    </ion-item>
+    <!-- <ion-item id="full" *ngIf="connexionForm.get('username')!.invalid && (connexionForm.get('username')!.dirty || connexionForm.get('username')!.touched)">
+      <ion-label class="error" position="floating">Username incorrect, l'username est constitué de chaine de carractere.</ion-label>
+    </ion-item> -->
 
     <ion-item id="full">
       <ion-label position="floating">Mot de passe </ion-label>
-      <ion-input type="password" [(ngModel)]="password"  required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></ion-input>
     </ion-item>
 
         <!-- verification du mot de passe  -->
-        <ion-item id="full" *ngIf="connexionForm.get('password')!.invalid && (connexionForm.get('password')!.dirty || connexionForm.get('password')!.touched)">
+        <!-- <ion-item id="full" *ngIf="connexionForm.get('password')!.invalid && (connexionForm.get('password')!.dirty || connexionForm.get('password')!.touched)">
           <ion-label class="error" position="floating">Mot de passe doit contenir au moins : <br> Une lettre majuscule <br> Une lettre muniscule <br> Un chiffre.</ion-label>
-        </ion-item>
+        </ion-item> -->
 
     <div class="small-text">
       <a [routerLink]="['/mdpoublier']">Mot de passe oublié ?</a>

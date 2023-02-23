@@ -1,20 +1,22 @@
 <ion-content style="text-align: center; align-items: center;">
   <ion-row style="text-align: center; align-content: center; align-self: center;">
-    <div style="margin-top: 50px; text-align: center; align-items: center;">
+    <ion-col size="12">
+        <div>
       <p>{{ title }}</p>
     </div>
+    </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <ion-card>
+      <ion-card *ngFor="let enquete of ToutEnquete">
         <img [src]="activityImage" alt="Image de l'activité">
         <ion-card-header>
-          <ion-card-subtitle>{{activityName}}</ion-card-subtitle>
+          <ion-card-subtitle>{{enquete.libelle}}</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <p>Date de debut: {{begunDate}}</p>
-          <p>Date de fin: {{endDate}}</p>
+          <p>Date de debut: {{enquete.datedebut}}</p>
+          <p>Date de fin: {{enquete.datefin}}</p>
         </ion-card-content>
 
         <p>Nom de l'organisateur {{ organization }}</p>
@@ -22,17 +24,36 @@
         <ion-row>
           <ion-col size="4"> <ion-button *ngIf="showRejectButton" color="danger"
               (click)="reject()">Refuser</ion-button></ion-col>
-          <ion-col size="4"> <ion-button *ngIf="showViewMoreButton"
-              (click)="presentPopover($event)">Voir+</ion-button></ion-col>
-          <ion-popover  #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
-            <ng-template>
-              <ion-content class="ion-padding">Description de l'activité</ion-content>
-            </ng-template>
-          </ion-popover>
+              <!-- Le modal pour la description d'une activité  -->
+          <ion-col size="4">
+              <ion-content class="voirplus">
+                <ion-button (click)="setOpen(true)">Voir+</ion-button>
+                <ion-modal [isOpen]="isModalOpen">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar>
+                        <ion-title>Description de l'activité</ion-title>
+                        <ion-buttons slot="end">
+                          <ion-button (click)="setOpen(false)">Fermer</ion-button>
+                        </ion-buttons>
+                      </ion-toolbar>
+                    </ion-header>
+                    <ion-content class="ion-padding">
+                      <p>
+                        {{enquete.description}}
+                      </p>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+              </ion-content>
+              </ion-col>
           <ion-col size="4"> <ion-button *ngIf="showAcceptButton" color="success"
               (click)="accept()">Accepter</ion-button></ion-col>
         </ion-row>
       </ion-card>
+
+
+      
     </ion-col>
   </ion-row>
 

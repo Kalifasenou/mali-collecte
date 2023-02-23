@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-profil',
@@ -13,4 +13,9 @@ export class ProfilPage implements OnInit {
   ngOnInit() {
   }
 
+  @ViewChild('popover') popover: { event: Event; };
+  isModalOpen = false;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 }

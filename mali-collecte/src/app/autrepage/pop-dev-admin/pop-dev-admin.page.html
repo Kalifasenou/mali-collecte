@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Devenir Administrateur
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closePopover()">Fermer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="submitForm(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email personnel</ion-label>
+        <ion-input type="email" name="personalEmail" [(ngModel)]="personalEmail" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type d'organisation</ion-label>
+        <ion-select name="organizationType" [(ngModel)]="organizationType" required>
+          <ion-select-option value="ONG">ONG</ion-select-option>
+          <ion-select-option value="Public institut">Institution publique</ion-select-option>
+          <ion-select-option value="Sondage bureau">Bureau d'etude</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email professionnel</ion-label>
+        <ion-input type="email" name="professionalEmail" [(ngModel)]="professionalEmail" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nom de l'organisation</ion-label>
+        <ion-input type="text" name="organizationName" [(ngModel)]="organizationName" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Numéro de {{organizationNumber}}</ion-label>
+        <ion-input type="text" name="organizationNumber" [(ngModel)]="organizationNumber" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Adresse de {{organizationNumber}} </ion-label>
+        <ion-input type="text" name="organizationPost" [(ngModel)]="organizationPost" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Poste occupé dans l'organisation {{organizationNumber}} </ion-label>
+        <ion-select name="occupiedPost" [(ngModel)]="occupiedPost" required>
+          <ion-select-option value="Responsable">Responsable</ion-select-option>
+          <ion-select-option value="Employé">Employé</ion-select-option>
+          <ion-select-option value="Autre"><input type="Autre" placeholder="Autre poste à specifié !">Autre poste </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button type="submit" expand="block" routerLink="/home/Profil">Envoyer</ion-button>
+  </form>
+</ion-content>

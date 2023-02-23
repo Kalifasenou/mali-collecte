@@ -18,7 +18,7 @@ export class AuthenticationService {
     );
   }
 
-  login(loginPayload: ILogin): Observable<ILoginRetrieve> {
-    return this.httpClient.post<ILoginRetrieve>(URL_LOGIN, loginPayload);
+  login(loginPayload: any): Observable<ILoginRetrieve> {
+    return this.httpClient.post<ILoginRetrieve>(`http://localhost:8080/api/auth/signin`, loginPayload);
   }
 }

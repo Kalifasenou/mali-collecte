@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Création d'un Sondage</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Type de l'enquête</ion-label>
+    <ion-input type="text" [(ngModel)]="form.type" name="type" readonly></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Libellé du Sondage </ion-label>
+    <ion-input type="text" placeholder="Libellé du Sondage " [(ngModel)]="form.libelle" name="libelle"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Image</ion-label>
+    <ion-input type="file" placeholder="image de l'enquête"   (change)="chargerImages($event)" name="images"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Description du Sondage </ion-label>
+    <ion-input type="text" placeholder="Description du Sondage " [(ngModel)]="form.description" name="description"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Date de début du Sondage </ion-label>
+    <ion-input type="date" placeholder="Date de debut du Sondage " [(ngModel)]="form.datedebut" name="datedebut"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Date de fin du Sondage </ion-label>
+    <ion-input type="date" placeholder="Date de fin du Sondage " [(ngModel)]="form.datefin" name="datefin"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="back()" expand="block">Annuler</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="ajoutEnquete()" expand="block">Créer</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

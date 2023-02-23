@@ -1,8 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Menu assigner repondant
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content>
-  <ion-card>
-    <div style="  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 10px;;"> <p>type de questionnaire :<b> {{nom}} </b></p>   </div></ion-card>
+<ion-content [fullscreen]="true">
+
+  <form #form="ngForm">
+
+    <ion-list lines="none">
+
+      <ion-item>
+        <ion-label position="stacked">Type d'enquête:</ion-label>
+        <ion-select [(ngModel)]="selectedType" name="type" #type="ngModel" required>
+          <ion-select-option value="enquete">Enquête</ion-select-option>
+          <ion-select-option value="sondage">Sondage</ion-select-option>
+        </ion-select>
+      </ion-item>
 
 
+
+      <!-- <ion-item>
+        <ion-content padding>
+          <form #form="ngForm">
+            <ion-list>
+              <ion-item *ngFor="let question of questions">
+                <ion-label>{{ question }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </form>
+        </ion-content>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label position="stacked">Tranche d'âge:</ion-label>
+        <ion-select [(ngModel)]="selectedAgeRange" name="ageRange" #ageRange="ngModel" required>
+          <ion-select-option value="18-25">18-25</ion-select-option>
+          <ion-select-option value="26-35">26-35</ion-select-option>
+          <ion-select-option value="36+">36+</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Genre:</ion-label>
+        <ion-select [(ngModel)]="selectedGender" name="gender" #gender="ngModel" required>
+          <ion-select-option value="homme">Homme</ion-select-option>
+          <ion-select-option value="femme">Femme</ion-select-option>
+          <ion-select-option value="les deux">Les deux</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Région:</ion-label>
+        <ion-select [(ngModel)]="selectedRegion" name="region" #region="ngModel" multiple>
+          <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+          <ion-select-option value="Kayes">Kayes</ion-select-option>
+          <ion-select-option value="Bamako">Bamako</ion-select-option>
+          <ion-select-option value="Koulikoro">Koulikoro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button> expand="block" color="primary" (click)="submitForm(form)">Valider</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" color="danger" (click)="cancelForm()">Annuler</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
+
+
+
+
+
+
+
+<script>
+  
+
+
+
+</script>

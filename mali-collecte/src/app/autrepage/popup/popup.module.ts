@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormArray } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { PopupPageRoutingModule } from './popup-routing.module';
+// import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 import { PopupPage } from './popup.page';
 
@@ -13,7 +14,10 @@ import { PopupPage } from './popup.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PopupPageRoutingModule
+    // FormArray,
+    PopupPageRoutingModule,
+    ReactiveFormsModule,
+
   ],
   declarations: [PopupPage]
 })

@@ -1,5 +1,7 @@
+import { EnquetesService } from './../../services/enquetes.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-enquete',
@@ -9,22 +11,34 @@ import { PopoverController } from '@ionic/angular';
 export class EnquetePage implements OnInit {
 
   @ViewChild('popover') popover: { event: Event; };
-
-  isOpen = false;
-
-  presentPopover(e: Event) {
-    this.popover.event = e;
-    this.isOpen = true;
+  isModalOpen = false;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
+
+
+  ToutEnquete:any;
+
+AfficherTout(){
+  this.enquetesService.voirToutEnquete().subscribe(data =>{
+    this.ToutEnquete=data;
+    console.log(this.ToutEnquete);
+  });
+}
+
+
+
 
   // activityName: string = "Activity 1";
   // organization: string = "Organization A";
   // begunDate: string = "01/01/2022";
   // endDate: string = "01/31/2022";
 
-  constructor(public popoverController: PopoverController) { }
+
+  constructor(public popoverController: PopoverController, private enquetesService:EnquetesService,) { }
 
   ngOnInit() {
+    this.AfficherTout();
   }
 
   title = 'Les enquêtes public ou ceux auxquelles vous avez été assignées';

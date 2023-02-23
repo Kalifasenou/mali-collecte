@@ -1,19 +1,176 @@
-<ion-header>
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+  <ion-title>
+  Question Form
+  </ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <form [formGroup]="questionForm">
+      <ion-list formArrayName="questions">
+        <ion-item *ngFor="let question of questions.controls; let i = index">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10">
+                <ion-input formControlName="questionText" placeholder="Question"></ion-input>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon class="trash" name="close-circle-outline" (click)="deleteQuestion(i)"></ion-icon>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-select formControlName="questionType" placeholder="Question Type">
+                  <ion-select-option value="text">Text</ion-select-option>
+                  <ion-select-option value="single">Single Choice</ion-select-option>
+                  <ion-select-option value="multiple">Multiple Choice</ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="full" (click)="addQuestion()">Add Question</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <ion-header>
   <ion-toolbar>
-    <ion-title>Ionic Modal Popup Example</ion-title>
+    <ion-title>
+      Formulaire
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fermer</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col text-center>
-        Model Title : {{ model_title }}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-button (click)="closeModel()">Close</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-list>
+      <ng-container formArrayName="questionsArray">
+
+
+       <!-- <ng-container *ngFor="let question of form.controls['questionsArray'].value; let i = index"> -->
+        <ng-container *ngFor="let questionForm of questionsArray.controls; let i = index">
+          <div formGroupName=questionForm>
+
+
+
+          <ion-item>
+            <ion-label position="stacked">Question {{ i + 1 }}</ion-label>
+            <ion-input type="text" formControlName="question"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Type de réponse</ion-label>
+            <ion-select formControlName="type">
+              <ion-select-option value="text">Texte</ion-select-option>
+              <ion-select-option value="single">Choix unique</ion-select-option>
+              <ion-select-option value="multiple">Choix multiple</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ng-container *ngIf="questionForm.get('type')?.value === 'text'">
+            <ion-item>
+              <ion-label position="stacked">Réponse</ion-label>
+              <ion-input type="text" formControlName="reponse"></ion-input>
+            </ion-item>
+          </ng-container>
+
+          <ng-container *ngIf="questionForm.get('type')?.value === 'single'">
+            <ion-list>
+              <ng-container *ngFor="let option of questionForm.get('options')?.value; let j = index">
+                <ion-item>
+                  <ion-label position="stacked">Option {{ j + 1 }}</ion-label>
+                  <ion-input type="text" formControlName="option"></ion-input>
+                </ion-item>
+              </ng-container>
+            </ion-list>
+            <ion-button (click)="addOption(question)">Ajouter une option</ion-button>
+          </ng-container>
+
+          <ng-container *ngIf="questionForm.get('type')?.value === 'multiple'">
+            <ion-list>
+              <ng-container *ngFor="let option of question.get('options').controls; let j = index">
+                <ion-item>
+                  <ion-label position="stacked">Option {{ j + 1 }}</ion-label>
+                  <ion-input type="text" formControlName="option"></ion-input>
+                </ion-item>
+              </ng-container>
+            </ion-list>
+            <ion-button (click)="addOption(question)">Ajouter une option</ion-button>
+          </ng-container>
+        </div>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+    <ion-button (click)="addQuestion()">Ajouter une question</ion-button>
+    <ion-button (click)="submitForm()">Soumettre</ion-button>
+  </form>
 </ion-content>

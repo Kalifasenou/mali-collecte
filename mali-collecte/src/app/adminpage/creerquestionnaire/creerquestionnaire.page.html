@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Création d'un Questionnaire</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" *ngIf="!isFormsCreate" >
+<form action="POST">
+  <ion-item>
+    <ion-label position="stacked">Libellé du Questionnaire </ion-label>
+    <ion-input type="text" placeholder="Libellé du Questionnaire " [(ngModel)]="form.libellequestionnaire" name="libellequestionnaire"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="back()" expand="block">Annuler</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="AjoutQuestionnaire()" expand="block"  >Créer</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+</ion-content>
+<div *ngIf="isFormsCreate">
+  Vous ne pouvez plus céer de questionnaire !
+
+</div>

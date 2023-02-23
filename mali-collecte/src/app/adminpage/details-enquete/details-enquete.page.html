@@ -1,0 +1,40 @@
+<ion-content>
+<ion-card>
+  <ion-card-header >
+    <ion-card-title >Detai de l'enquête : {{ enquete?.libelle }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content >
+    <div ><img src="{{enquete?.images}}" alt="" srcset=""></div>
+    <div>
+      <p><strong>Date de début :</strong> {{ enquete?.datedebut }}</p>
+      <p><strong>Date de fin :</strong> {{ enquete?.datefin }}</p>
+      <p><strong>Organisateur :</strong> {{ enquete?.organisation }}</p>
+      <p><strong>Description :</strong> {{ enquete?.description }}</p>
+      <p><strong>Type : </strong> {{ enquete?.type }}</p>
+      <p><strong>Etat :</strong> {{ enquete?.etat }}</p>
+    </div>
+  </ion-card-content>
+
+</ion-card>
+<div >
+  <ion-button class="monbouton" [routerLink]="['/creerquestionnaire', id]" > ajouter Questionnaire </ion-button>
+</div>
+<ion-card>
+  <ion-card-title >
+Nom questionnaire :{{questionnaires?.libellequestionnaire}}
+  </ion-card-title>
+  <ion-button (click)="addQuestions(listequestion)">Ajouter Question</ion-button>
+  <ion-card-content>
+
+      <ion-item *ngFor="let question of listeQuestionnaireQuestions">
+        <ion-row style="display: block;">
+          <ion-col size="8">Question : {{question?.intitule}}</ion-col>
+          <ion-col size="4"> Type : {{question.type}}</ion-col>
+        </ion-row>
+      </ion-item>
+
+  </ion-card-content>
+</ion-card>
+</ion-content>
+

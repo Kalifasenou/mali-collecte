@@ -1,3 +1,4 @@
+import { PopoverController } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -6,11 +7,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'splash-screen',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: '/connexion',
+    pathMatch: 'full'
+  },
   {
     path: 'accueil',
     loadChildren: () => import('./pages/accueil/accueil.module').then( m => m.AccueilPageModule)
@@ -40,10 +41,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/connexion/mdpoublier/mdpoublier.module').then( m => m.MdpoublierPageModule)
   },
   {
-    path: 'splash-screen',
-    loadChildren: () => import('./splash-screen/splash-screen.module').then( m => m.SplashScreenPageModule)
-  },
-  {
     path: 'recuperemdp',
     loadChildren: () => import('./pages/connexion/recuperemdp/recuperemdp.module').then( m => m.RecuperemdpPageModule)
   },
@@ -59,6 +56,30 @@ const routes: Routes = [
     path: 'questionnaire',
     loadChildren: () => import('./adminpage/questionnaire/questionnaire.module').then( m => m.QuestionnairePageModule)
   },
+  {
+    path:'popup',
+    loadChildren:() => import('./autrepage/popup/popup.module').then( m => m.PopupPageModule)
+  },
+  {
+    path: 'pop-dev-admin',
+    loadChildren: () => import('./autrepage/pop-dev-admin/pop-dev-admin.module').then( m => m.PopDevAdminPageModule)
+  },
+  {
+    path: 'creer-enquete',
+    loadChildren: () => import('./adminpage/creer-enquete/creer-enquete.module').then( m => m.CreerEnquetePageModule)
+  },
+  {
+    path: 'creersondage',
+    loadChildren: () => import('./adminpage/creersondage/creersondage.module').then( m => m.CreersondagePageModule)
+  },
+  {
+    path: 'creerquestionnaire/:id',
+    loadChildren: () => import('./adminpage/creerquestionnaire/creerquestionnaire.module').then( m => m.CreerquestionnairePageModule)
+  },
+  {
+    path: 'details-enquete/:id',
+    loadChildren: () => import('./adminpage/details-enquete/details-enquete.module').then( m => m.DetailsEnquetePageModule)
+  }
 
 ];
 

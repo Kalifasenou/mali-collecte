@@ -8,7 +8,7 @@ const routes: Routes = [
     component: HomePage,
     children:[
       {
-        path: 'Acceuil',
+        path: 'acceuil',
         loadChildren: () => import('../pages/accueil/accueil.module').then( m => m.AccueilPageModule)
       },
       {
@@ -22,9 +22,23 @@ const routes: Routes = [
       {
         path: 'Profil',
         loadChildren: () => import('../pages/profil/profil.module').then( m => m.ProfilPageModule)
-      }
+      },
+      {
+        path: '',
+        redirectTo: '/acceuil',
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        redirectTo: '/acceuil',
+        pathMatch: 'full'
+      },
 
     ]
+  },{
+    path: '',
+    redirectTo: 'home/acceuil',
+    pathMatch: 'full'
   }
 ];
 
