@@ -24,7 +24,7 @@ CREERENQUETE(type:any,libelle:any,description:any,images:File,datedebut:any,date
   data.append("type",type)
   data.append("libelle",libelle)
   data.append("description",description)
-  data.append("images",images)
+  data.append("file",images)
   data.append("datedebut",datedebut)
   data.append("datefin",datefin)
   return this.http.post(COLLECAPI + `creer`,data)

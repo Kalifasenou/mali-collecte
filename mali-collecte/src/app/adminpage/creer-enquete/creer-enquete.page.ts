@@ -20,7 +20,7 @@ export class CreerEnquetePage implements OnInit {
  datedebut: any
   datefin:any
   image:any
-  ajout: Object
+  ajout: any
 
   constructor(
     private enquetesService:EnquetesService

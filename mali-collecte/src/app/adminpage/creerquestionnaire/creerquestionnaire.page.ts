@@ -1,4 +1,4 @@
-import { Route, Router, ActivatedRoute } from '@angular/router'; 
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { EnquetesService } from 'src/app/services/enquetes.service';
 import { QuestionnairesService } from 'src/app/services/questionnaires.service';

@@ -16,7 +16,7 @@ export class DetailsEnquetePage implements OnInit {
   listeQuestions: any;
   listeQuestionnaireQuestions: any;
 
-
+id1:any
 
   NouvelleQuestion:any = {
     intitule: null,
@@ -29,22 +29,22 @@ export class DetailsEnquetePage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  // listeQuestionnaireQuestions: any[] = [];
 
-  // enquete: any; // Define enquete property here
 
-  constructor(private route: ActivatedRoute, private enquetesService: EnquetesService, private questionnairesService: QuestionnairesService) { }
+  constructor(private route: ActivatedRoute, private enquetesService: EnquetesService, private questionnairesService: QuestionnairesService) {
+  }
 
   ngOnInit() {
-    const { id } = this.route.snapshot.params;
-    console.log(id);
+    this.id1 = this.route.snapshot.params['id'];
 
-    this.enquetesService.VoirDescriptionEnquete(id).subscribe(data => {
+    console.log("hhhhhhhhhhhhhhhhhh: " + this.id1);
+
+    this.enquetesService.VoirDescriptionEnquete(this.id1).subscribe(data => {
       this.enquete = data;
       console.log(data);
     });
 
-    this.questionnairesService.AfficherQuestionnaireparIdEnquete(id).subscribe(data => {
+    this.questionnairesService.AfficherQuestionnaireparIdEnquete(this.id1).subscribe(data => {
       this.questionnaires = data;
       console.log(data);
 
@@ -52,6 +52,7 @@ export class DetailsEnquetePage implements OnInit {
         this.listeQuestionnaireQuestions = data;
         console.log(data);
       });
+
     });
   }
 
@@ -77,8 +78,18 @@ export class DetailsEnquetePage implements OnInit {
 
     this.questionnairesService.addQuestionsToQuestionnaire(this.NouvelleQuestion.intitule,this.NouvelleQuestion.type, this.questionnaires.id).subscribe(data => {
       this.listeQuestions=data;
-      console.log('Questions added successfully');
-      
+      //alert(JSON.stringify(data))
+     if(this.listeQuestions.status == 1){
+      this.setOpen(false);
+
+      this.questionnairesService.getQuestionsByQuestionnaireId(this.questionnaires.id).subscribe(data => {
+        this.listeQuestionnaireQuestions = data;
+        console.log(data);
+      });
+     }else{
+
+     }
+
     });
 
 
