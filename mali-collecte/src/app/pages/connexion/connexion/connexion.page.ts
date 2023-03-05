@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ILoginRetrieve } from 'src/models/ilogin/ilogin';
 import { AuthenticationService } from 'src/services/authentication/authentication.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-connexion',
@@ -18,7 +19,11 @@ export class ConnexionPage implements OnInit {
 
   roles:any=[];
 
-  constructor(private authenticationService: AuthenticationService,private router :Router) { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router :Router,
+    private storageService: StorageService
+    ) { }
 
   ngOnInit() {
   }
@@ -31,24 +36,23 @@ export class ConnexionPage implements OnInit {
       return;
     }
 
-
-
     var login={
       'username': this.username,
       'password': this.password
     }
 
-
     this.authenticationService.login(login).subscribe({
       next: (loginResponse: ILoginRetrieve) => {
         console.log(loginResponse);
 
+        this.storageService.saveUser(loginResponse);
+
         this.roles=loginResponse.roles
         this.roles.forEach((role: string) => {
-          if (role=="ROLE_ADMIN" ||role=="ROLE_MODERATOR") {
+          if (role=="ROLE_ADMIN" || role=="ROLE_MODERATOR") {
             this.router.navigate(['/admin-accueil']);
           }else if (role=="ROLE_USER") {
-            this.router.navigate(['/home/accueil']);
+            this.router.navigate(['/home/acceuil']);
           }
 
         });

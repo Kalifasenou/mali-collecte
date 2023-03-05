@@ -18,7 +18,7 @@
 
 </ion-card>
 <div *ngIf="!questionnaires" >
-  <ion-button class="monbouton" [routerLink]="['/creerquestionnaire', id1]" > ajouter Questionnaire </ion-button>
+  <ion-button  class="monbouton" [routerLink]="['/creerquestionnaire', id1]" > ajouter Questionnaire </ion-button>
 </div>
 <!-- <ion-button (click)="openModal()">Ajouter Question</ion-button> -->
 <div>
@@ -26,7 +26,7 @@
     <!-- [routerLink]="['/questionnaire', id]" -->
   <ion-col><ion-button
 
-    routerLink="/questionnaire">Assigner Repondant</ion-button></ion-col>
+    [routerLink]="['/questionnaire', quest?.id]">Assigner Repondant</ion-button></ion-col>
 </div>
 
 

@@ -8,55 +8,55 @@
 
 <ion-content [fullscreen]="true">
 
-  <form #form="ngForm">
+  <form [formGroup]="myForm" (ngSubmit)="envoyerForm()">
 
     <ion-list lines="none">
 
       <ion-item>
         <ion-label position="stacked">Tranche d'âge:</ion-label>
-        <ion-select [(ngModel)]="selectedAgeRange" name="ageRange" #ageRange="ngModel" required>
+        <ion-select formControlName="tranche">
           <ion-select-option value="0-5">0-5</ion-select-option>
           <ion-select-option value="5-15">5-15</ion-select-option>
           <ion-select-option value="15-25">15-25</ion-select-option>
           <ion-select-option value="25-35">25-35</ion-select-option>
           <ion-select-option value="35-50">35-50</ion-select-option>
           <ion-select-option value="50-65">50-65</ion-select-option>
-          <ion-select-option value="66+">66+</ion-select-option>
+          <ion-select-option value="65+">65+</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Genre:</ion-label>
-        <ion-select [(ngModel)]="selectedGender" name="gender" #gender="ngModel" required>
-          <ion-select-option value="homme">Homme</ion-select-option>
-          <ion-select-option value="femme">Femme</ion-select-option>
-          <ion-select-option value="les deux">Les deux</ion-select-option>
+        <ion-select formControlName="genre">
+          <ion-select-option value="m">Homme</ion-select-option>
+          <ion-select-option value="f">Femme</ion-select-option>
+          <ion-select-option value="hf">Les deux</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Région:</ion-label>
-        <ion-select [(ngModel)]="selectedRegion" name="region" #region="ngModel" multiple>
-          <ion-select-option value="Kayes">Kayes</ion-select-option>
-          <ion-select-option value="Koulikoro">Koulikoro</ion-select-option>
-          <ion-select-option value="Sikasso">Sikasso</ion-select-option>
-          <ion-select-option value="Segou">Segou</ion-select-option>
-          <ion-select-option value="Mopti">Mopti</ion-select-option>
-          <ion-select-option value="Tombouctou">Tombouctou</ion-select-option>
-          <ion-select-option value="Gao">Gao</ion-select-option>
-          <ion-select-option value="Kidal">Kidal</ion-select-option>
-          <ion-select-option value="Taoudeni">Taoudeni</ion-select-option>
-          <ion-select-option value="Menaka">Menaka</ion-select-option>
-          <ion-select-option value="Nioro">Nioro</ion-select-option>
-          <ion-select-option value="Kita">Kita</ion-select-option>
-          <ion-select-option value="Dioila">Dioila</ion-select-option>
-          <ion-select-option value="Nara">Nara</ion-select-option>
-          <ion-select-option value="Bougou">Bougou</ion-select-option>
-          <ion-select-option value="Koutiala">Koutiala</ion-select-option>
-          <ion-select-option value="San">San</ion-select-option>
-          <ion-select-option value="Douantza">Douantza</ion-select-option>
-          <ion-select-option value="Bandiagara">Bandiagara</ion-select-option>
-          <ion-select-option value="Bamako">District Bamako</ion-select-option>
+        <ion-select  formControlName="localite" multiple>
+          <ion-select-option value="kayes">Kayes</ion-select-option>
+          <ion-select-option value="koulikoro">Koulikoro</ion-select-option>
+          <ion-select-option value="sikasso">Sikasso</ion-select-option>
+          <ion-select-option value="segou">Segou</ion-select-option>
+          <ion-select-option value="mopti">Mopti</ion-select-option>
+          <ion-select-option value="tombouctou">Tombouctou</ion-select-option>
+          <ion-select-option value="gao">Gao</ion-select-option>
+          <ion-select-option value="kidal">Kidal</ion-select-option>
+          <ion-select-option value="taoudeni">Taoudeni</ion-select-option>
+          <ion-select-option value="menaka">Menaka</ion-select-option>
+          <ion-select-option value="nioro">Nioro</ion-select-option>
+          <ion-select-option value="kita">Kita</ion-select-option>
+          <ion-select-option value="dioila">Dioila</ion-select-option>
+          <ion-select-option value="nara">Nara</ion-select-option>
+          <ion-select-option value="bougou">Bougou</ion-select-option>
+          <ion-select-option value="koutiala">Koutiala</ion-select-option>
+          <ion-select-option value="san">San</ion-select-option>
+          <ion-select-option value="douantza">Douantza</ion-select-option>
+          <ion-select-option value="bandiagara">Bandiagara</ion-select-option>
+          <ion-select-option value="bamako">District Bamako</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -64,7 +64,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="primary" (click)="submitForm(form)">Valider</ion-button>
+        <ion-button type="submit" [disabled]="!myForm.valid" color="primary">Valider</ion-button>
       </ion-col>
       <ion-col>
         <ion-button expand="block" color="danger" (click)="cancelForm()">Annuler</ion-button>

@@ -1,72 +1,51 @@
-ion-card {
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 2px 2px 8px #ccc;
-}
-
 ion-card img {
-  width: 200px;
-  height: 200px;
-}
-
-ion-card ion-card-header {
+  height: auto;
   text-align: center;
 }
 
-ion-card ion-card-subtitle {
-  font-size: 18px;
-  font-weight: bold;
+ion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  ion-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-bottom: 16px;
+
+    ion-card {
+      width: 100%;
+      max-width: -webkit-fill-available;
+
+      ion-card-header {
+        ion-card-subtitle {
+          font-size: 16px;
+        }
+      }
+
+      ion-card-content {
+        p {
+          font-size: 14px;
+        }
+      }
+
+      ion-button {
+        font-size: 14px;
+      }
+    }
+  }
+
+
+  .voirplus ion-button {
+    background: #737373;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+  }
 }
-
-ion-card ion-card-title {
-  font-size: 14px;
-  font-style: italic;
-}
-
-ion-card ion-card-content {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-ion-card ion-button {
-  font-size: 10px;
-  margin-top: 20px;
-  width: 100%;
-  height: 45px;
-}
-
-ion-card ion-button[color="danger"] {
-  --background: #ff5252;
-  --color: #fff;
-}
-
-ion-card ion-button[color="success"] {
-  --background: #4caf50;
-  --color: #fff;
-}
-
-
-ion-button {
-  --background: #5AAE3E;
-}
-
-
-ion-modal {
-  --height: 50%;
-  --border-radius: 16px;
-  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-
-ion-modal::part(backdrop) {
-  background: rgba(209, 213, 219);
-  opacity: 1;
-}
-
-// ion-modal ion-toolbar {
-//   --background: rgb(14 116 144);
-//   --color: white;
-// }
-
-.voirplus{
-  
+.voirplusbutton{
+  background: #737373;
 }

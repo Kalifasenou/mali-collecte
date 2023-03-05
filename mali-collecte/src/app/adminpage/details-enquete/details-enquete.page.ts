@@ -16,6 +16,8 @@ export class DetailsEnquetePage implements OnInit {
   listeQuestions: any;
   listeQuestionnaireQuestions: any;
 
+  quest:any;
+
 id1:any
 
   NouvelleQuestion:any = {
@@ -39,24 +41,25 @@ id1:any
 
     console.log("hhhhhhhhhhhhhhhhhh: " + this.id1);
 
-    this.enquetesService.VoirDescriptionEnquete(this.id1).subscribe(data => {
+    this.enquetesService.VoirDescriptionEnquete(this.id1).subscribe(data => { //recuration de la l'id de l'enquete de l'affichage general pour afficher une enquete particuliere
       this.enquete = data;
       console.log(data);
     });
 
-    this.questionnairesService.AfficherQuestionnaireparIdEnquete(this.id1).subscribe(data => {
+    this.questionnairesService.AfficherQuestionnaireparIdEnquete(this.id1).subscribe(data => { //recuperation de l'id de l'enquete pour afficher le questionnaire
       this.questionnaires = data;
-      console.log(data);
+      console.log("gggggggg: " + JSON.stringify(data));
+      this.quest = JSON.parse(JSON.stringify(data));
 
-      this.questionnairesService.getQuestionsByQuestionnaireId(this.questionnaires.id).subscribe(data => {
+      console.log("mon id : " + this.quest.id);
+
+      this.questionnairesService.getQuestionsByQuestionnaireId(this.questionnaires.id).subscribe(data => { //recuperation de l'id du questionnaire pour afficher les question du question
         this.listeQuestionnaireQuestions = data;
-        console.log(data);
+        console.log(data); //
       });
 
     });
   }
-
-
 
 
   @ViewChild('addQuestionModal') addQuestionModal: any;

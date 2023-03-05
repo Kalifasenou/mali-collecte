@@ -27,8 +27,18 @@ CREERENQUETE(type:any,libelle:any,description:any,images:File,datedebut:any,date
   data.append("file",images)
   data.append("datedebut",datedebut)
   data.append("datefin",datefin)
-  return this.http.post(COLLECAPI + `creer`,data)
+  return this.http.post(COLLECAPI + `creer`,data,{responseType:'text'})
 }
+
+
+recupererLesDifferentesEnqutesAttribuerAUnUser(idUser:any): Observable<any> {
+  return this.http.get(COLLECAPI + `recuperlesenquentesdunutilisateur/${idUser}`);
+}
+
+recuprerLesQuestionsParEnquete(idEnquente:any): Observable<any> {
+  return this.http.get(COLLECAPI + `recuprerLesQuestionsParEnquete/${idEnquente}`);
+}
+
 
 
 

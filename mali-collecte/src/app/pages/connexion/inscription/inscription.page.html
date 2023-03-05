@@ -5,31 +5,83 @@
   <form class="inscription" style="margin: 10px;">
     <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
       <ion-label position="floating">Nom</ion-label>
-      <ion-input maxlength="15" type="text"></ion-input>
+      <ion-input maxlength="15" type="text" [(ngModel)]="forms.nom" name="nom"></ion-input>
     </ion-item>
     <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
       <ion-label position="floating">Prenom</ion-label>
-      <ion-input maxlength="25" type="text"></ion-input>
+      <ion-input maxlength="25" type="text" [(ngModel)]="forms.prenom" name="prenom"></ion-input>
     </ion-item>
-    <ion-item id="full">
-      <ion-label position="floating">Ville, Region</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="Veuillez selctionner un region" [(ngModel)]="forms.localite" name="localite">
+          <ion-select-option value="kayes">Kayes</ion-select-option>
+          <ion-select-option value="koulikoro">Koulikoro</ion-select-option>
+          <ion-select-option value="sikasso">Sikasso</ion-select-option>
+          <ion-select-option value="segou">Segou</ion-select-option>
+          <ion-select-option value="mopti">Mopti</ion-select-option>
+          <ion-select-option value="tombouctou">Tombouctou</ion-select-option>
+          <ion-select-option value="gao">Gao</ion-select-option>
+          <ion-select-option value="kidal">Kidal</ion-select-option>
+          <ion-select-option value="taoudeni">Taoudeni</ion-select-option>
+          <ion-select-option value="menaka">Menaka</ion-select-option>
+          <ion-select-option value="nioro">Nioro</ion-select-option>
+          <ion-select-option value="kita">Kita</ion-select-option>
+          <ion-select-option value="dioila">Dioila</ion-select-option>
+          <ion-select-option value="nara">Nara</ion-select-option>
+          <ion-select-option value="bougou">Bougou</ion-select-option>
+          <ion-select-option value="koutiala">Koutiala</ion-select-option>
+          <ion-select-option value="san">San</ion-select-option>
+          <ion-select-option value="douantza">Douantza</ion-select-option>
+          <ion-select-option value="bandiagara">Bandiagara</ion-select-option>
+          <ion-select-option value="bamako">District Bamako</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="Veuillez selctionner un genre" [(ngModel)]="forms.genre" name="genre">
+          <ion-select-option value="m">Masculin</ion-select-option>
+          <ion-select-option value="f">Feminin</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-item id="full" counter="true" [counterFormatter]="customCounterFormatter">
       <ion-label position="floating" >Telephone</ion-label>
-      <ion-input type="number" maxlength="8" required></ion-input>
+      <ion-input type="number" maxlength="8" required [(ngModel)]="forms.numero" name="numero"></ion-input>
     </ion-item>
     <ion-item id="full">
-      <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-label position="floating">Adresse mail</ion-label>
+      <ion-input type="email" required [(ngModel)]="forms.email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item id="full">
+      <ion-label position="floating">organisation</ion-label>
+      <ion-input type="text" required [(ngModel)]="forms.organisation" name="organisation"></ion-input>
+    </ion-item>
+
+    <ion-item id="full">
+      <ion-label position="floating">Date de Naissance</ion-label>
+      <ion-input type="date" [(ngModel)]="forms.datedenaissance" name="datedenaissance" required></ion-input>
+    </ion-item>
+
+    <ion-item id="full">
+      <ion-label position="floating">Pseudo</ion-label>
+      <ion-input type="text" [(ngModel)]="forms.username" name="username" required></ion-input>
+    </ion-item>
+    <ion-item id="full">
+      <ion-label position="floating" >Mot de passe</ion-label>
+      <ion-input type="password" required [(ngModel)]="forms.password" name="password"></ion-input>
     </ion-item>
     <ion-item id="full">
       <ion-label position="floating">Confirmer mot de passe</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input type="password" [(ngModel)]="confimerMDP"  name="confimerMDP" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col >
-        <ion-button type="submit"  expand="block" >Valider</ion-button>
+        <ion-button type="submit"  expand="block" (click)="CreationCompte()">Valider</ion-button>
       </ion-col>
     </ion-row>
     <div></div>

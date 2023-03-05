@@ -53,7 +53,7 @@ const routes: Routes = [
     loadChildren: () => import('./adminpage/profils/profils.module').then( m => m.ProfilsPageModule)
   },
   {
-    path: 'questionnaire',
+    path: 'questionnaire/:quest',
     loadChildren: () => import('./adminpage/questionnaire/questionnaire.module').then( m => m.QuestionnairePageModule)
   },
   {
@@ -79,6 +79,10 @@ const routes: Routes = [
   {
     path: 'details-enquete/:id',
     loadChildren: () => import('./adminpage/details-enquete/details-enquete.module').then( m => m.DetailsEnquetePageModule)
+  },
+  {
+    path: 'formulairedenquete',
+    loadChildren: () => import('./pages/formulairedenquete/formulairedenquete.module').then( m => m.FormulairedenquetePageModule)
   }
 
 ];
